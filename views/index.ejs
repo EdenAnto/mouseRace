@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Race</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/objects.js"></script>
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="title">Mouse Race</div>
+        <div class="timer" id="timer">00:00</div>
+    </div>
+
+    <div class="container">
+        <button class="start-button" id="startButton">Start Game</button>
+    </div>
+    <div class="board" id="board">
+    </div>
+
+    <script>
+        // define basic configuration
+        // this variables can set by the user at the html to adjust game diffuclty
+        let board, boardRect;
+        const speed = 1;
+        const numOfElement = 20;
+        const collectPercent = 50;
+        const avoidPercent = 30;
+        const SCREENSIZEREF = 1000; // define - adjust elements size according size refernce
+
+
+        document.getElementById('startButton').addEventListener('click', ()=>{startGame(board)});
+
+        function startGame(board) {
+            const container = document.querySelector('.container');
+            container.style.display = 'none';
+            board = document.getElementById('board');
+            board.style.display = 'block';
+            boardRect = board.getBoundingClientRect();
+            const game = new Game('board', boardRect, numOfElement, collectPercent, avoidPercent,'timer',speed,SCREENSIZEREF); 
+            game.start();
+        }
+
+    </script>
+</body>
+</html>

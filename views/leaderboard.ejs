@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/leaderboard.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="title">Mouse Race</div>
+    </div>
+    <% if (message == 'connectionError') { %>
+        <h1 class="leaderboardTitle">Connection error occurred, your score can't be saved</h1>
+    <% } %>
+    <h1 class="leaderboardTitle">Leader Board - Top 3:</h1>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% table.forEach(function(line) { %>
+                    <tr>
+                        <td><%= line.name %></td>
+                        <td><%= line.score %></td>
+                    </tr> 
+                <% }); %>
+                <tr id="bottonRow" onclick="window.location.href='/'">
+                    <td colspan="2">Start New Game</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
